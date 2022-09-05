@@ -188,3 +188,91 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+header {
+  background-color: #229fbc;
+}
+
+.container1 {
+
+  display: flex;
+  padding: 10px;
+}
+
+ 
+
+
+.searchBarInput {
+  padding: 8px 10px;
+  background: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 200%;
+}
+
+.searchBarSearch-btn {
+  position: relative;
+  left: 310%;
+  padding: 7px 10px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+ 
+}
+
+.categoriesDrop {
+  position: relative;
+  display: inline-block;
+}
+.catBtn {
+  background-color: #f6ea73;
+  color: white;
+  padding: 10px;
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  
+}
+
+
+.sellBtn {
+  background-color: #54a396;
+  color: white;
+  padding: 10px;
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+
+}
+
+.homeBtn a {
+  background: none;
+  color: white;
+  position:relative;
+  padding: 10px;
+  top: 8px;
+}
+
+.logBtn a {
+  background: none;
+  color: white;
+  position:relative;
+  left: 815px;
+  top: 7px;
+}
+
+.userMain {
+  color:white;
+  position: relative;
+  left: 11.5%;
+  top: 7px;
+}

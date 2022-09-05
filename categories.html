@@ -10,35 +10,47 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/227685d263.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link" href="home.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Iniciar sesión</a>
-          </li>
-          <li class="nav-item">
-          </li>
-        </ul>
+  <header>
+    <div class="container1">
+
+      <div class="homeBtn">
+         <a href="home.html"><i class="fa-solid fa-house"></i></a>       
       </div>
+
+      <div class="categoriesDropBtn">
+        <form action="categories.html">
+          <button class="catBtn">Categorías</button>
+        </form>
+      </div>
+        
+      <div class="sellMain">
+        <form action="sell.html">
+          <button class="sellBtn">Vender</button>
+        </form> 
+      </div>
+
+      <div>
+        <input class="searchBarInput" type="text" name="" id="" placeholder="Todo lo que busques está aquí!">   
+      </div>
+      
+      <div>
+        <button class="searchBarSearch-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+
+      <div class="userMain"id="user">
+        <i class="fa-solid fa-user"></i>
+      </div>
+
+      <div class="logBtn">
+        <a href="index.html"><i class="fa-solid fa-right-to-bracket"></i></a>       
+     </div>
+
     </div>
-  </nav>
+  </header>
   <main class="pb-5">
     <div class="text-center p-4">
       <h2>Categorías</h2>
@@ -105,6 +117,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/categories.js"></script>
+  <script src="js/my-profile.js"></script>
 </body>
 
 </html>

@@ -1,11 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
     const boton = document.querySelector('#logBtn');
+    
 
     boton.addEventListener('click', (event) => {
         console.log('click')
         event.preventDefault();
 
         const email = document.querySelector('#email')
+        
+      
         const password= document.querySelector('#password')
 
         console.log(password)
@@ -16,6 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             location.replace("home.html")
             
-        }     
+        }  
+
+        localStorage.setItem("user", email.value);
+
     })
-})
+}) 
+
+

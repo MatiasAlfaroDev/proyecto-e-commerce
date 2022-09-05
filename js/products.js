@@ -1,4 +1,6 @@
-const URL = 'https://japceibal.github.io/emercado-api/cats_products/101.json'
+let categoria = localStorage.getItem('catID');
+const URL = 'https://japceibal.github.io/emercado-api/cats_products/' + categoria + '.json'
+
 
 function getHTML(producto) {
     return `    
@@ -24,11 +26,76 @@ function getHTML(producto) {
 document.addEventListener('DOMContentLoaded', async function() {
     const list = document.querySelector('.product-list');
 
-    const listaProductos = await getJSONData(URL);
-    console.log(listaProductos)
+    const listaProductos = await getJSONData(URL);  
+    
 
    for (let producto of listaProductos.data.products) {
     list.innerHTML  += getHTML(producto)
    }
 }) 
   
+const priceAsc = document.getElementById('priceAsc');
+const priceDesc = document.getElementById('priceDesc');
+const sortByRelevance = document.getElementById('sortByRelevance');
+
+
+document.addEventListener("DOMContentLoaded", async function() {
+    const productsList = await getJSONData(URL)
+    let productArray = productsList.data.products
+    console.log(productArray)
+})
+
+
+const ORDER_ASC_BY_COST = "ASC";
+const ORDER_DESC_BY_COST = "DESC";
+const ORDER_BY_RELEVANCE = ">";
+
+let currentCategoriesArray = [];
+let currentSortCriteria = undefined;
+let minCount = undefined;
+let maxCount = undefined;
+
+function sortCategories(criteria, array){
+    let result = [];
+    if (criteria === ORDER_ASC_BY_COST)
+    {
+        result = array.sort(function(a, b) {
+            if ( a.cost < b.cost ){ return -1; }
+            if ( a.cost > b.cost ){ return 1; }
+            return 0;
+        });
+
+    }else if (criteria === ORDER_DESC_BY_COST){
+        result = array.sort(function(a, b) {
+            if ( a.cost > b.cost ){ return -1; }
+            if ( a.cost < b.cost ){ return 1; }
+            return 0;
+        });
+
+    }else if (criteria === ORDER_BY_RELEVANCE){
+        result = array.sort(function(a, b) {
+            if ( a.soldCount > b.soldCount ){ return -1; }
+            if ( a.soldCount < b.soldCount ){ return 1; }
+            return 0;
+        });
+    }
+
+    return result;
+}
+
+
+document.addEventListener("DOMContentLoaded", function(e) {
+    document.getElementById("priceAsc").addEventListener("click", function(){
+        
+        console.log('click')
+    });
+    
+    document.getElementById("priceDesc").addEventListener("click", function(){
+        sortAndShowCategories(ORDER_DESC_BY_COST);
+    });
+    
+    document.getElementById("sortByRelevance").addEventListener("click", function(){
+        sortAndShowCategories(ORDER_BY_RELEVANCE);
+    });
+    
+})
