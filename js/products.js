@@ -1,101 +1,158 @@
-let categoria = localStorage.getItem('catID');
-const URL = 'https://japceibal.github.io/emercado-api/cats_products/' + categoria + '.json'
+const filterAsc         = document.querySelector('#filterAsc')
+const filterDesc        = document.querySelector('#filterDesc')
+const filterRel         = document.querySelector('#filterRel')
+const filterPriceBtn    = document.querySelector('#filterPriceBtn')
+const filterDeleteBtn   = document.querySelector('#filterDeleteBtn')
+
+// Asc Filter
+function ascPrice(array) {
+    array.sort((a, b) => {
+      if (a.cost > b.cost) return -1;
+      if (a.cost < b.cost) return 1;
+      return 0; 
+    })
+        showProducts(array)
+}
+
+// Desc Filter
+function descPrice(array) {
+    array.sort((a, b) => {
+      if (a.cost < b.cost) return -1;
+      if (a.cost > b.cost) return 1;
+      return 0; 
+    })
+        showProducts(array)
+
+}
+
+// Rel Filter
+function relevance(array) {
+    array.sort((a, b) => {
+      if ( parseInt(a.soldCount) > parseInt(b.soldCount)) return -1;
+      if ( parseInt(a.soldCount) < parseInt(b.soldCount)) return 1;
+      return 0; 
+    })
+        showProducts(array)
+}
+
+// User price Filter
+function userPrice(array) {
+
+    var minPrice = document.querySelector('#priceFilterCountMin').value
+    var maxPrice = document.querySelector('#priceFilterCountMax').value
+
+    // checks user's minimum price input
+    if ((minPrice != undefined) && (minPrice != '')) maxValue = parseInt(minPrice)
+    else minPrice = 0
+
+    // checks user's maximum price input
+    if ((maxPrice != undefined) && (maxPrice != '')) maxValue = parseInt(maxPrice)
+    else maxPrice = 0
+
+    let priceArray = []
+
+    for (const product of array) {
+        if (minPrice <= product.cost && maxPrice >= product.cost) {
+            priceArray.push(product)
+        }
+    }
+
+    showProducts(priceArray)
+}
+    
+// Dynamic product adding 
+document.addEventListener("DOMContentLoaded", ()=> {
+    //Fetch for products, json to array
+    fetch(productsUrl)
+    .then(res => res.ok ? Promise.resolve(res) : Promise.reject())
+    .then(res => res.json())
+    .then(res => {
+
+        productCat(res.catName)
+
+        // Filter triggers
+        relevance(res.products)
+        document.querySelector('#DropdownMenu').innerHTML = 'Mas relevantes'
 
 
-function getHTML(producto) {
-    return `    
-    <div class="row row-cols-1 row-cols-md g-4">
-        <div class="col product-list">
+        filterAsc.addEventListener('click', () => {
+            ascPrice(res.products)
+            document.querySelector('#DropdownMenu').innerHTML = 'Mayor precio'
+        })
+
+        filterDesc.addEventListener('click', () => {
+            descPrice(res.products)
+            document.querySelector('#DropdownMenu').innerHTML = 'Menor precio'
+        })
+
+        filterRel.addEventListener('click', () => {
+            relevance(res.products)
+            document.querySelector('#DropdownMenu').innerHTML = 'Mas relevantes'
+        })
+
+        
+        filterPriceBtn.addEventListener('click', () => {
+            userPrice(res.products)
+        })
+
+        filterDeleteBtn.addEventListener('click', () => {
+
+            document.querySelector('#priceFilterCountMin').value = ''
+            document.querySelector('#priceFilterCountMax').value = ''
+            minCount = undefined
+            maxCount = undefined
+            relevance(res.products)
+
+        })
+        
+
+    })
+})
+
+// Dynamic product adding content
+function showProducts(productsList) {
+
+    document.getElementById('productContainer').innerHTML = ''
+
+    for (let index = 0; index < productsList.length; index++) {
+        const product = productsList[index];
+
+        document.getElementById('productContainer').innerHTML += `    
+        <div onclick="setProdID(${product.id})" class="col product-list cursor-active">
             <div class="card">
-                <img src="${producto.image}" class="card-img-top">
+                <img src="${product.image}" class="img-fluid rounded-start">
                 <div class="card-body">
-                    <h5 class="card-title fw-bold">${producto.name}</h5>
-                    <p class="card-text">${producto.description}</p>
-                    <p>${producto.soldCount} vendidos</p>
+                    <h5 class="card-title fw-bold">${product.name}</h5>
+                    <p class="card-text">${product.description}</p>
+                    <p>${product.soldCount} vendidos</p>
                     <hr>
                     <div class="fw-bold text-end">
-                        <span class="currency">${producto.currency}</span>
-                        <span class="cost">${producto.cost}</span>
+                        <span class="currency">${product.currency}</span>
+                        <span class="cost">${product.cost}</span>
                     </div>
                 </div>
             </div>
         </div> 
     </div>`;  
-}
 
-document.addEventListener('DOMContentLoaded', async function() {
-    const list = document.querySelector('.product-list');
-
-    const listaProductos = await getJSONData(URL);  
-    
-
-   for (let producto of listaProductos.data.products) {
-    list.innerHTML  += getHTML(producto)
-   }
-}) 
+       }    
   
-const priceAsc = document.getElementById('priceAsc');
-const priceDesc = document.getElementById('priceDesc');
-const sortByRelevance = document.getElementById('sortByRelevance');
-
-
-document.addEventListener("DOMContentLoaded", async function() {
-    const productsList = await getJSONData(URL)
-    let productArray = productsList.data.products
-    console.log(productArray)
-})
-
-
-const ORDER_ASC_BY_COST = "ASC";
-const ORDER_DESC_BY_COST = "DESC";
-const ORDER_BY_RELEVANCE = ">";
-
-let currentCategoriesArray = [];
-let currentSortCriteria = undefined;
-let minCount = undefined;
-let maxCount = undefined;
-
-function sortCategories(criteria, array){
-    let result = [];
-    if (criteria === ORDER_ASC_BY_COST)
-    {
-        result = array.sort(function(a, b) {
-            if ( a.cost < b.cost ){ return -1; }
-            if ( a.cost > b.cost ){ return 1; }
-            return 0;
-        });
-
-    }else if (criteria === ORDER_DESC_BY_COST){
-        result = array.sort(function(a, b) {
-            if ( a.cost > b.cost ){ return -1; }
-            if ( a.cost < b.cost ){ return 1; }
-            return 0;
-        });
-
-    }else if (criteria === ORDER_BY_RELEVANCE){
-        result = array.sort(function(a, b) {
-            if ( a.soldCount > b.soldCount ){ return -1; }
-            if ( a.soldCount < b.soldCount ){ return 1; }
-            return 0;
-        });
-    }
-
-    return result;
 }
 
+function productCat(product) {
 
-document.addEventListener("DOMContentLoaded", function(e) {
-    document.getElementById("priceAsc").addEventListener("click", function(){
-        
-        console.log('click')
-    });
+    document.getElementById('prodCat').innerHTML = `
     
-    document.getElementById("priceDesc").addEventListener("click", function(){
-        sortAndShowCategories(ORDER_DESC_BY_COST);
-    });
+    <h2 class="fw-bold">${product}</h3>
     
-    document.getElementById("sortByRelevance").addEventListener("click", function(){
-        sortAndShowCategories(ORDER_BY_RELEVANCE);
-    });
-    
-})
+    `
+
+
+}
+
+function setProdID(id) {
+    localStorage.setItem("prodID", id);
+    window.location = "product-info.html"
+}
+
+const productsUrl = 'https://japceibal.github.io/emercado-api/cats_products/' + localStorage.getItem('catID') + '.json';    

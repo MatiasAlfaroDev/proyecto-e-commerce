@@ -5,7 +5,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
-
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -58,46 +57,60 @@
     <div class="container">
       <div class="row">
         <div class="col-12  text-center">
-          <h3>Productos</h3>
-          <p>Veras aqui todos los productos de la categoría Autos</p>
-        </div>      
+          <br>
+          
+        </div>   
+            
+   
+        <div class="row ">
+          
+          <div class="col text-end p-3">
+            <h3 id="prodCat" class="fw-bold">Productos</h3>
+            
+            <label class="fw-bold"  for="dropdownMenu">Ordenar por:</label>
+              <a style="color:#229fbc; text-decoration: none;" class="dropdown-toggle" href="#" id="DropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Mas relevantes
+              </a>
+              <ul class="dropdown-menu dropdown-menu" aria-labelledby="DropdownMenu">
+                <li><a class="dropdown-item" id="filterRel" href="#">Mas Relevantes</a></li>
+                <li><a class="dropdown-item" id="filterAsc" href="#">Mayor Precio</a></li>
+                <li><a class="dropdown-item" id="filterDesc" href="#">Menor Precio</a></li>
+              </ul>
+            </li>
+           
+            <hr>
+            <div class="row g-4 s">
+              <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+                <div class="row container p-0 m-0">
+                  <div class="col">
+                    
+                  </div>
+                  <div class="col">
 
-        <div class="row">
-          <div class="col text-end">
-            <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-              <input type="radio" class="btn-check" name="options" id="priceAsc">
-              <label class="btn btn-light" for="sortAsc"><i class="fas fa-sort-amount-down mr-1">$</i></label>
-              <input type="radio" class="btn-check" name="options" id="priceDesc">
-              <label class="btn btn-light" for="sortDesc"><i class="fas fa-sort-amount-up mr-1">$</i></label>
-              <input type="radio" class="btn-check" name="options" id="sortByRelevance" checked>
-              <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i>Rel</label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
-            <div class="row container p-0 m-0">
-              <div class="col">
-                <p class="font-weight-normal text-end my-2">Precio.</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number" placeholder="min." id="priceFilterCountMin">
-              </div>
-              <div class="col">
-                <input class="form-control" type="number" placeholder="máx." id="priceFilterCountMax">
-              </div>
-              <div class="col-3 p-0">
-                <div class="btn-group" role="group">
-                  <button class="btn btn-light btn-block" id="priceFilterBtn">Filtrar</button>
-                  <button class="btn btn-link btn-sm" id="clearPriceFilterBtn">Limpiar</button>
+                  </div>
+                  <div class="col-5 p-1 btn-group">
+                   
+                    <input class="form-control " style="margin-right:5%; font-size:15px; " type="number" placeholder="Precio Min." id="priceFilterCountMin">
+                    <input class="form-control" style="font-size:15px;" type="number" placeholder="Precio Máx." id="priceFilterCountMax">
+                  </div>
+                  <div class="col-3 p-1">
+                    <div class="btn-group" role="group">
+                      <button id="filterPriceBtn" class="btn btn-primary fw-bold" style="background-color:#229fbc; border:none;" type="button">Filtrar</button>
+                      <button id="filterDeleteBtn" class="btn btn-light fw-bold" style="color:#229fbc; background-color: #d3eaf0 ;" type="button">Limpiar</button>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            
+            
+            
+            
           </div>
         </div>
-    </div>
 
-    <div class="product-list row row-cols-1 row-cols-md-3 g-4">
+        
+
+    <div id="productContainer" class="product-list row row-cols-1 row-cols-md-3">
 
     </div>
 
@@ -123,6 +136,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
+  
 </body>
 
 </html>
