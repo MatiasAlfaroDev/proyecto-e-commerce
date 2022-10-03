@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         showProductInfo(res)
         showProductImage(res)
+        showProductRelated(res)
+        console.log(res)
       
     })
 
@@ -83,8 +85,8 @@ function addComment(user, comment, score, date) {
     <div class="card-footer">
       <small class="text-muted">${date}</small>
     </div>
-
   </div>
+  
   
   `;  
 
@@ -182,7 +184,6 @@ function showProductComment(comment){
           <div class="card-footer">
             <small class="text-muted">${product.dateTime}</small>
           </div>
-  
         </div>
         
         `;
@@ -235,6 +236,7 @@ function showProductInfo(product) {
       <h4 class="fw-bold">Descripción</h4>
 
       <p>${product.description}</p>
+      
       <br>
         `;
 
@@ -267,3 +269,30 @@ function showProductInfo(product) {
 
 }    
   
+function showProductRelated(product) {
+
+  for (let i = 0; i < product.relatedProducts.length; i++) {
+    const related = product.relatedProducts[i];
+
+    document.querySelector('#relatedContainer').innerHTML += `
+    
+    <div class="col cursor-active" onclick="setProdID(${related.id})">
+          <div class="card">
+            <img src="${related.image}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center fw-bold">${related.name}</h5>
+            </div>
+          </div>
+        </div>
+    
+    
+    `
+
+  }
+
+}
+
+function setProdID(id) {
+  localStorage.setItem("prodID", id);
+  window.location = "product-info.html"
+}

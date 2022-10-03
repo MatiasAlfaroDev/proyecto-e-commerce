@@ -273,6 +273,18 @@ header {
 .userMain {
   color:white;
   position: relative;
-  left: 11.5%;
-  top: 7px;
+  left: 57.5%;
+  top: 2px;
+}
+
+#dropdownMenuButton2 {
+
+  background-color: #229fbc;
+  border: none;
+}
+
+
+#dropdownMenuButton2:active {
+
+  border: none;
 }

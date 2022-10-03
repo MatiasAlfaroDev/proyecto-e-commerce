@@ -39,3 +39,27 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  document.querySelector('.userMain').innerHTML = ` 
+
+  <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+          ${localStorage.getItem('user')}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+          <li><a class="dropdown-item m-0" href="cart.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a></li>
+          <li><a class="dropdown-item m-0" href="my-profile.html"><i class="fa-solid fa-user"></i> Perfil</a></li>
+          <li><a class="dropdown-item m-0" onclick="clearUser()" href="#"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
+        </ul>
+      </div>
+  `;
+})
+
+
+function clearUser() {
+
+  localStorage.setItem("user", '');
+  window.location = "index.html"
+}
