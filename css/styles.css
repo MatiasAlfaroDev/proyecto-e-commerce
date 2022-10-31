@@ -1,13 +1,15 @@
 .jumbotron,
 .card-body,
 .container,
-.site-header {
-  font-family: 'Raleway', serif !important;
+.site-header,
+body {
+  font-family: 'Roboto', serif !important;
 }
 
 .jumbotron .display-4 {
   font-weight: bold;
 }
+
 
 nav a {
   text-decoration: none;
@@ -196,7 +198,7 @@ header {
 .container1 {
 
   display: flex;
-  padding: 10px;
+  padding: 8px;
 }
 
  

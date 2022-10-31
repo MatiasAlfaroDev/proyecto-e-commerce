@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
 
         const email = document.querySelector('#email')
-        
-      
         const password= document.querySelector('#password')
 
         console.log(password)

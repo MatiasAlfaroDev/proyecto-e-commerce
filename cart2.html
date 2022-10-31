@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cdbootstrap/css/cdb.min.css"/>
+  <script src="https://kit.fontawesome.com/227685d263.js" crossorigin="anonymous"></script>
+  <title>Document</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-light p-3" style="background-color: #2e2e2e;">
+    <div class="container-fluid">
+
+      <div class="offcanvastrigger">
+        <a class="navbar-brand" data-bs-toggle="offcanvas" style="color: #fff;" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          <i class="fa-solid fa-bars fa-lg"></i>
+        </a>
+      </div>
+     
+     
+        <div class="col ms-3 mb-3  text-white">
+          <div class="row">Hola, Identificate!</div>
+          <div class="row fw-bold cursor-active" style="position:absolute;top:30px;" onclick="">Iniciar Sesión</div>
+        </div>
+       
+       
+
+        <div>
+          <a class="navbar-brand" style="color: #fff;"role="button" >
+            <i class="fa-solid fa-magnifying-glass fa-1x"></i>
+          </a>
+          
+          <a class="navbar-brand" style="color: #fff;"role="button" >
+            <i class="fa-solid fa-bag-shopping fa-1x"></i>
+          </a>
+
+
+        </div>
+      </div>
+      
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div style="background-color: #2e2e2e;" class="offcanvas-header">
+          <div class="col">
+
+            <div class="row">
+
+                <div class="col-sm-3">      
+                  <img class="rounded-circle "src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF0mkZsMkaywe4ecyexbpomRK2UmXnT-YAr9u_6Ezi11ZmhnFF7OKHYtN0rFsny-OpIZU&usqp=CAU" height="60" alt="100x100">
+                </div>
+
+                <div class="col text-white">
+                  <h5 class="fw-bold">Matias Alfaro</h5>
+                  <p style="position: absolute; top: 35px;">matiasalfaro@gmail.com</p>
+                  <p  style="position: absolute; top: 55px;" class="small text-muted">Miembro desde 2022</p>
+                </div>
+                  
+                </div> 
+            </div>
+
+          <div class="col-sm-2 text-end ">
+            <p class="text-white cursor-active mt-3" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa-regular fa-circle-xmark fa-2x"></i></p>
+          </div>
+        </div>
+
+      <div class="offcanvas-body bg-secondary text-white">
+        <div class="">
+          <div id="btnuser" class="fs-5 cursor-active p-2"><i class="fa-solid fa-gear"></i>ㅤConfiguracion</div>
+          <br>
+          <div id="btnuser" class="fs-5 cursor-active p-2"><i class="fa-solid fa-tag"></i>ㅤCategorías </div>
+          <br>
+          <div id="btnuser" class="fs-5 cursor-active p-2"><i class="fa-solid fa-heart"></i>ㅤFavoritos</div>
+          <br>
+          <div id="btnuser" class="fs-5 cursor-active p-2"><i class="fa-solid fa-coins"></i>ㅤMetodos de pago</div>
+          <br>  
+          <div id="btnuser" class="fs-5 cursor-active p-2"><i class="fa-solid fa-comments-dollar"></i>ㅤVender</div>
+          <br>
+          <div id="btnlogout" class="text-center fs-5 cursor-active p-2">Cerrar sesión</div>
+        </div>
+        
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+   
+  <!--CORRECT FORM BOI<div class="col justify-content-start">
+      <div style="color:#5fc75c;" class="step-title">
+        <span  class="step-number fs-5"><i class="fa-solid fa-circle-check fa-2x"></i></span>
+        <label for="step-text"><div class="step-text fw-bold ms-2">Productos <br>seleccionados.</div></label>
+        <svg class="mt-3 " style="height:4px; background-color: #5fc75c;">
+      </div>
+  </div>-->
+
+  <br>
+    <div class="container stepper">
+      <div class="row ">
+
+        <div class="col ms-3 mt-1">
+          <div style="color:#5fc75c;" class="step-title">
+            <span  class="step-number fs-5"><i class="fa-solid fa-circle-check fa-2x"></i></span>
+            <label for="step-text"><div class="step-text fw-bold ms-2">Productos <br>seleccionados.</div></label>
+            <svg class="mt-3 " style="height:4px; background-color: #5fc75c;">
+          </div>
+      </div>
+
+        <div class="col">
+          <div style="color:#2e2e2e;" class="step-title">
+            <span  class="step-number fw-bold fs-1">02</span>
+            <label for="step-text"><div class="step-text fw-bold ms-2">Metodos de <br>Envío.</div></label>
+            <svg style="height:4px; background-color:  #e6e6e6;">
+          </div>
+        </div>
+
+        <div class="col">
+          <div style="color:#2e2e2e;" class="step-title">
+            <span  class="step-number fw-bold fs-1">03</span>
+            <label for="step-text"><div class="step-text fw-bold ms-2">Metodos de <br>pago.</div></label>
+            <svg style="height:4px; background-color:  #e6e6e6;">
+          </div>
+        </div>
+
+        <div class="col">
+          <div style="color:#2e2e2e;" class="step-title">
+            <span  class="step-number fw-bold fs-1">04</span>
+            <label for="step-text"><div class="step-text fw-bold ms-2">Finalizar <br>compra.</div></label>
+            <svg style="height:4px; width:320px; background-color:  #e6e6e6;"></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  <br>
+
+  <div class="container">
+  <div class=" row">
+   
+   <!--
+    <div class="col-sm-6">
+      <div id="" class="container p-3">
+        <div class="row ">
+          <div class="col-sm-2">
+              <img  height="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAMFBMVEX09PTMzMzJycnPz8/d3d3V1dXi4uLo6Ojw8PDx8fH39/ft7e3Y2NjQ0NDp6enb29uHE20LAAACaklEQVR4nO3b6W6CQBhGYUTWD9T7v9uylLIN6jCk8Cbn+deEGo6DMOAYRQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIJyFiuzshLesStJAdVZdufEV38LFydkZm6w+IrBJrK86itkxgU1ifnaKmz363QvUvsbjmoNYdjuXPPMQz6R7lfLsGKeq3bd76LvfHwnFIXt0tOKYwjuF51kVtjMUbzqFVmR1/cpK30idwv7qH98yz0SVwvI+XP19JygqhY9xehMnXokihfl0/hZ77a5I4WM2zXz5DKJI4XwKvjHLNGeGRmE1L7w7N7fKeRLSKCy+KGwCnedZjcJofruXuo7SbpwdiRqFlk4D42y9rf0eyOtEjcL5BzFeb2rV5oRApNAmj6QcjyRs8g4sE0UKJ4nxemJq8yGeJ6oURpY/uic26frppy0uJvNEmcI2JM/yovlz8cxlGbhIFCrcsA6cX0/kC52Bt3hMlC90Bk5HUbzQPYL9KA6b6BXmk8/YZuCYqFdYj/f47wL/EtUKrR6/LXsfOCSKFbaBQ+KnwGa79sqpVWjp7x1Ec6B+DhQsHAK7xM+BeoVjYLPzr499eoXTwO+IFfoHihXuWbWgVVh792kV7lt3IlRoe0ZQqvCLax+FZ8c4UUghheebFu6jU1gk++gU7l3t3f2rRmGAyxcGr329cuEh60stunBh2Z3y6yxM/wX52S1u/bf3Ryzzdq9tuIDnYWv1q7NTNlhy0O8t/Nb6/SfLbnHoYbpjSep/sjLfOZ0ZXfTXJKPgH69deAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABDyA0uAKIxQw0bjAAAAAElFTkSuQmCC" class="img-fluid rounded "  he alt="...">
+          </div>
+  
+          <div class="col-md-10">
+            <div class="row">
+              <div class="col">
+                <h5 class="">AMD Ryzen 5 5600X 6 núcleos y 12 hilos</h5>
+                <p class="card-text small text-muted">ID Producto: 50924</p>
+              </div>
+
+              <div class="col-sm-1  text-end">
+                <span class="cursor-active fs-4">
+                  <i class="fa-solid fa-xmark fa-1x"></i>
+                </span>
+              </div>
+            </div>
+          
+            <div class="row">
+              <div class="col input-group mt-2">
+                <p id="btnMin" class="border fs-6 p-1 cursor-active"><i class="fa-solid fa-chevron-down fa-sm"></i> </p>
+                <p class="card-text text-muted fw-bold ms-2 mt-2">Cantidad.:</p>
+                <p class="text-muted fw-bold ms-2 mt-2">1</p>
+                <p id="btnMaxs" class="border fs-6 p-1 ms-2 cursor-active"><i class="fa-solid fa-chevron-up fa-sm"></i></p>
+              </div>
+             <div class="col-sm-2 text-muted text-end me-4 mt-3"><h5>US$249.00</h3></div>
+            </div>
+          </div>
+          
+          </div>
+        </div>
+
+
+
+        
+    </div>-->
+
+     
+    <div class="col-sm-6 ">
+      <div class="container p-3">
+        <div id="deliveryselect" onclick="enviostandard()" class="row text-start p-1 cursor-active">
+          <div class="col-sm-1 mt-4">
+            <img src="https://cdn-icons-png.flaticon.com/512/91/91858.png" height="70px" alt="">
+          </div>
+            <div class="col ms-5 mt-4">
+              <h4>Envio Standard</h4>
+              <small class="fs-bold">Demora aproximada de 12 a 15 días.</small>
+              <p><small>5% del Subtotal.</small></p>
+            </div>
+            <p>
+          </div>
+
+          <br>
+          <div id="deliveryselect" onclick="envioexpress()" class="row text-start p-1 cursor-active">
+            <div class="col-sm-1 mt-4">
+              <img src="https://cdn-icons-png.flaticon.com/512/91/91857.png" height="70px" alt="">
+            </div>
+              <div class="col ms-5 mt-4">
+                <h4>Envio Express</h4>
+                <small>Demora aproximada de 5 a 8 días</small>
+                <p><small>7% del Subtotal.</small></p>
+              </div>
+            </div>
+
+          <br>
+          <div id="deliveryselect" onclick="enviopremium()" class="row text-start p-1 cursor-active">
+            <div class="col-sm-1 mt-4">
+              <img src="https://cdn-icons-png.flaticon.com/512/91/91857.png" height="70px" alt="">
+            </div>
+              <div class="col ms-5 mt-4">
+                <h4>Envio Premium</h4>
+                <small>Demora aproximada de 2 a 5 días</small>
+                <p><small>15% del Subtotal.</small></p>
+              </div>
+    
+              
+            </div>
+        </div>   
+    </div>
+
+    
+
+    <!--Esto se mantiene y se modifica en tiempo real-->
+    <div class="col-sm-6 mt-3">
+      
+      <div class="row text-muted">
+        <div class="col"><small>2 | AMD Ryzen 5 5600X 6 núcleos y 12 hilos </small></div>
+        <div class="col text-end">US$249.00</div>
+      </div>
+      <hr>
+
+      <div class="row text-muted">
+        <div class="col-sm-10">     
+          <h5>Subtotal</h3>
+          <small>Costo unitario del producto por cantidad.</small></div>
+        <div class="col text-end">
+          <div class="input-group">
+            <h5>USD</h5>
+            <h5 id="subtotal">498.00</h3>  
+          </div>
+          
+        </div>      
+      </div>
+      <hr>
+
+      <div class="row text-muted">
+        <div class="col">     
+          <h5>Cargos por envío</h3>
+          <small>Varía en funcion del metodo de envío.</small></div>
+        <div class="col text-end">
+          <h5 id="cargoenvio">US$50.00</h3>  
+        </div>
+      </div>
+     <hr>
+
+      <div class="row">
+        <div class="col">     
+          <h4>Total de la Compra.:</h3>
+        </div>
+        <div class="col text-end fw-bold">
+          <h4 id="totalcompra">US$548.00</h3>  
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+
+
+
+ 
+
+
+
+  </main>
+
+  <div>
+    <script src="https://cdn.jsdelivr.net/npm/cdbootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cdbootstrap/js/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cdbootstrap/js/cdb.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+  </div>
+</body>
+</html>
