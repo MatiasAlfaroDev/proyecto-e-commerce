@@ -192,7 +192,7 @@ a.custom-card:hover {
 }
 
 header {
-  background-color: #229fbc;
+  background-color:#f8f9fa;
 }
 
 .container1 {
@@ -201,8 +201,30 @@ header {
   padding: 8px;
 }
 
- 
+input {
 
+  border-radius: 5px;
+  border-color: #1e1e1e;
+
+
+}
+
+
+ input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+   opacity: 1;
+  
+}
+.searchBarInput2 {
+  padding: 8px 10px;
+  background: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 200%;
+  border-radius: 10px;
+}
 
 .searchBarInput {
   padding: 8px 10px;
@@ -211,14 +233,15 @@ header {
   border: none;
   cursor: pointer;
   width: 200%;
+  border-radius: 10px;
 }
 
 .searchBarSearch-btn {
   position: relative;
-  left: 310%;
+  left: 10%;
   padding: 7px 10px;
-  margin-right: 16px;
-  background: #ddd;
+  margin-right: 70px;
+  background: none;
   font-size: 17px;
   border: none;
   cursor: pointer;
@@ -230,38 +253,52 @@ header {
   display: inline-block;
 }
 .catBtn {
-  background-color: #f6ea73;
-  color: white;
-  padding: 10px;
+  background-color: #f8f9fa;
+  color: #1e1e1e;
+  padding: 5px;
   position: relative;
   display: inline-block;
-  font-size: 14px;
+  font-size: 16px;
   border: none;
   cursor: pointer;
-  font-weight: bold;
+  top: 3px;
+  left: 240%;
   
 }
 
 
 .sellBtn {
-  background-color: #54a396;
-  color: white;
-  padding: 10px;
+  background-color:#f8f9fa;
+  color: #1e1e1e;
+  padding: 5px;
   position: relative;
   display: inline-block;
-  font-size: 14px;
+  font-size: 16px;
   border: none;
   cursor: pointer;
-  font-weight: bold;
+  top: 3px;
+  left: 360%;
 
 }
+.catBtn:hover {
+  background-color: #ececec;
+  border-radius: 10px;
+}
+
+.sellBtn:hover {
+
+  background-color: #ececec;
+  border-radius: 10px;
+}
+
 
 .homeBtn a {
   background: none;
-  color: white;
+  color: #1e1e1e;
   position:relative;
+  font-size: 16px;
   padding: 10px;
-  top: 8px;
+  top: 7px;
 }
 
 .logBtn a {
@@ -275,14 +312,15 @@ header {
 .userMain {
   color:white;
   position: relative;
-  left: 57.5%;
+  left:53%;
   top: 2px;
 }
 
 #dropdownMenuButton2 {
 
-  background-color: #229fbc;
+  background-color:#f8f9fa ;
   border: none;
+  color: #1e1e1e;
 }
 
 
@@ -290,3 +328,21 @@ header {
 
   border: none;
 }
+
+.btn-light {
+
+  background-color: #229fbc;
+  color: #fff;
+  border: none;
+}
+
+.btn-light:hover,
+.btn-light:active,
+.btn-light:visited,
+.btn-light:focus {
+  background-color: #1b7c92;
+  color: #fff;
+  border: none;
+  box-shadow: none;
+}
+

@@ -80,9 +80,53 @@ document.addEventListener("DOMContentLoaded", function() {
 
 })
 
-
 function clearUser() {
 
   localStorage.setItem("user", '');
   window.location = "index.html"
 }
+
+
+
+
+document.addEventListener('DOMContentLoaded', () =>{
+
+  var productsearch = 'https://japceibal.github.io/emercado-api/cats_products/' + localStorage.getItem('catID') + '.json';
+
+    fetch(productsearch)
+    .then(res => res.ok ? Promise.resolve(res) : Promise.reject())
+    .then(res => res.json())
+    .then(res => {
+    
+    // Search Bar 
+
+    const searchInput = document.querySelector('.searchBarInput')
+
+    searchInput.addEventListener('input', (e) => {
+
+      const value = e.target.value
+      let showsearchProd = searchProduct(res.products, value)
+
+      for (let i = 0; i < showsearchProd.length; i++) {
+        const searchedProd = showsearchProd[i];
+        console.log(searchedProd)
+      }
+
+    })      
+  })
+})
+
+function searchProduct(array, value) {
+
+  let productShow = []
+
+  for (const product of array) {
+    if (product.name.includes(value) || product.description.includes(value)) {
+        productShow.push(product)
+    }
+  }
+
+  return productShow
+  
+}
+

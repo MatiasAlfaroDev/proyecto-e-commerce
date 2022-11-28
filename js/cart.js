@@ -6,12 +6,14 @@ document.addEventListener('DOMContentLoaded', ()=> {
     .then(res => res.json())
     .then(res => {
     
+      let userCart = JSON.parse(localStorage.getItem('carritoTOTAL')) 
+      console.log(userCart)
+    
     console.log(res)
-    addProdCart(res.articles)
-    totales(res.articles[0].unitCost)
+    addProdCart(userCart)
+    totales(sumaCarrito(userCart))
 
-    let btnMax           = document.querySelector('#btnMax')
-    let btnMin           = document.querySelector('#btnMin')
+    console.log(userCart.map(function (e) { return e.id; }).indexOf(50921))
 
     let check5           = document.querySelector('#check5')
     let check7           = document.querySelector('#check7')
@@ -31,6 +33,15 @@ document.addEventListener('DOMContentLoaded', ()=> {
     let bankcheck        = document.querySelector('#bankcheck')
     let banknumber       = document.querySelector('#banknumber')
 
+    document.getElementById('cartProdRes').addEventListener('change', ()=>{
+
+      document.getElementById('subtotalprod').innerHTML = `${'USD' + ' ' + sumaCarrito(userCart)}`
+      document.getElementById('costoenvio1').innerHTML = `${'USD' + ' '+ localStorage.getItem('envio')*sumaCarrito(userCart)}`
+      document.getElementById('sumatotal').innerHTML = `${'USD' + ' '+ parseInt(localStorage.getItem('envio')*sumaCarrito(userCart)+(sumaCarrito(userCart))) }`
+
+
+    })
+
     creditcardcheck.addEventListener('change', () => {
 
       if (creditcardcheck.checked) {
@@ -40,7 +51,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
         cardmonth.removeAttribute('disabled', '')
       } 
     })
-
 
     bankcheck.addEventListener('change', () => {
      
@@ -53,8 +63,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
     })
 
     console.log(creditcardcheck.checked)
-
-    
 
     document.getElementById('finalizar').addEventListener('click', ()=> {
 
@@ -100,9 +108,9 @@ document.addEventListener('DOMContentLoaded', ()=> {
     && (creditcardcheck.checked || bankcheck.checked))
     {
       
-
       window.location = "home.html"
       alert('Has comprado con éxito')
+      localStorage.setItem('carritoTOTAL', [])
 
   }
   
@@ -136,42 +144,11 @@ document.addEventListener('DOMContentLoaded', ()=> {
         esquinacalle.classList.remove('is-valid')
       }
 
-     
-
-
-      document.getElementById('costoenvio1').innerHTML = `USD ${localStorage.getItem('precio')*localStorage.getItem('envio')}`
-      document.getElementById('sumatotal').innerHTML = `USD ${parseInt(localStorage.getItem('precio'))+parseInt(localStorage.getItem('precio')*localStorage.getItem('envio'))}`
-
+      document.getElementById('subtotalprod').innerHTML = `${'USD' + ' ' + sumaCarrito(userCart)}`
+      document.getElementById('costoenvio1').innerHTML = `${'USD' + ' '+ localStorage.getItem('envio')*sumaCarrito(userCart)}`
+      document.getElementById('sumatotal').innerHTML = `${'USD' + ' '+ parseInt(localStorage.getItem('envio')*sumaCarrito(userCart)+(sumaCarrito(userCart))) }`
 
     })
-    
-    btnMax.addEventListener('click', ()=>{
-
-      totales()
-      quanty.value++
-      localStorage.setItem('cantidad', quanty.value)
-      localStorage.setItem('precio', res.articles[0].unitCost*quanty.value)
-      document.getElementById('subtotalprod').innerHTML =`${res.articles[0].currency + ' ' +res.articles[0].unitCost*quanty.value+',00 '}`
-      document.getElementById('priceMult').innerHTML = `${res.articles[0].currency + ' ' +res.articles[0].unitCost*quanty.value+',00 '}`
-      document.getElementById('costoenvio1').innerHTML = `USD ${localStorage.getItem('precio')*localStorage.getItem('envio')}`
-      document.getElementById('sumatotal').innerHTML = `USD ${parseInt(localStorage.getItem('precio'))+parseInt(localStorage.getItem('precio')*localStorage.getItem('envio'))}`
-    })
-
-    btnMin.addEventListener('click', ()=>{
-
-      
-      if (quanty.value > 1) {quanty.value--}
-      totales()
-      localStorage.setItem('cantidad', quanty.value)
-      localStorage.setItem('precio', res.articles[0].unitCost*quanty.value)
-      document.getElementById('subtotalprod').innerHTML =`${res.articles[0].currency + ' ' +res.articles[0].unitCost*quanty.value+',00 '}`
-      document.getElementById('priceMult').innerHTML = `${res.articles[0].currency + ' ' +res.articles[0].unitCost*quanty.value+',00 '}`
-      document.getElementById('costoenvio1').innerHTML = `USD ${localStorage.getItem('precio')*localStorage.getItem('envio')}`
-      document.getElementById('sumatotal').innerHTML = `USD ${parseInt(localStorage.getItem('precio'))+parseInt(localStorage.getItem('precio')*localStorage.getItem('envio'))}`
-
-
-    })
-
   })
 })
 
@@ -180,51 +157,59 @@ function addProdCart(value) {
     for (let i = 0; i < value.length; i++) {
         const array = value[i];
 
+        console.log(value)
+
         document.getElementById('cartProdRes').innerHTML += 
 
-            `<br>
-            <div class="row">
-            
-            <div class="col-sm-3">
-              <div class="col"><img class="img-fluid"src="${array.image}" alt=""></div>
-            </div>
-
-            <div class="col mt-2">
-              <h4 class="fw-bold" >${array.name}</h4>
-              <p class="card-text"><small class="text-muted">ID Producto: ${array.id}</small></p>
-             
-              <div class="input-group">
-                <h5 class="fw-bold text-muted" id="priceMult"> ${array.currency + ' ' + array.unitCost}</h6>
+            `
+            <div class="card " style=" border: none;">
+            <div class="row g-0">
+              <div class="col-md-1 mt-4">
+                <img src="${array.images[0]}" class="rounded-start" alt="..." height="80px" width="80px" style="object-fit: cover;">
+              </div>
+              <div class="col ms-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title fw-bold">${array.name}
+                      <p class="card-text"><small class="text-muted">${array.id}</small></p></h5>
+                    </div>
+      
+                    <div onclick="localStorage.setItem('idProdDel', ${array.id})" class="col text-end mt-2 cursor-active">
+                      <span class="text-de"><i class="fa-solid fa-circle-xmark fa-2x"></i></span>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col"><h5 class="fw-bold">${array.currency + ' ' + array.cost}</h5></div>
+                    <div class="col text-end me-1">
+                       <input id="cantidadProd${array.id}" class="text-center fs-5 fw-bold" min="1" value="1" style="width: 15%;  " type="number">
+                    </div>
+                    
+                  </div>
+                
+                  
+                </div>
+                
               </div>
             </div>
-
-            <div class="col-sm-2">
-              <div class="input-group">
-                <span><button id="btnMin" class=" btn-dark btn-sm ms-2"> <i class="fa-solid fa-minus"></i></button></span>
-                <input id="quanty" class="form-control form-control-sm w-25 input-number text-center" value="1" min="1"" type="text" name="">
-                <span><button id="btnMax" class=" btn-dark btn-sm"> <i class="fa-solid fa-plus"></i></button></span>
-              </div>
-            </div>
-
-           
-          </div>
-          <hr>
           `
 
     }
 }
 
-function totales(value){
+function totales(value, ){
 
   document.getElementById('totales').innerHTML = 
 
-  `<hr>
+  `
+  <hr>
   <div class=" row">
   <div class="col">
     <h6>Subtotal</h6>
-    <small class="text-muted">Costo unitario del producto por cantidad</small>
+    <small class="text-muted">Sumatoria de todos los productos del carrito</small>
   </div>
- <div id="subtotalprod" class="col text-muted text-end">USD 15200</div>
+ <div id="subtotalprod" class="col text-muted text-end">USD ${value}</div>
 </div>
 <hr>
 <div class="row">
@@ -240,7 +225,7 @@ function totales(value){
   <div class="col">
     <h6>Total</h6>
   </div>
- <div id="sumatotal"class="col text-muted text-end fw-bold">USD 15200</div>
+ <div id="sumatotal"class="col text-muted text-end fw-bold"></div>
 </div>`
 
 
@@ -263,5 +248,36 @@ function submitForms() {
 
   document.getElementById('formcarrito1').submit()
   document.getElementById('formcarrito2').submit()
+
+}
+
+function sumaCarrito(array) {
+
+  let arrayProd = []
+
+  for (let i = 0; i < array.length; i++) {
+    
+
+    let cantidad = document.getElementById('cantidadProd' + array[i].id)
+    console.log(cantidad.value)
+
+    const precios = array[i].cost;
+
+    let precioProd = parseInt(JSON.stringify(precios*cantidad.value))
+
+    arrayProd.push(precioProd)
+    console.log(arrayProd)
+  }
+  
+  
+  return arrayProd.reduce((a, b) => a + b, 0)
+  
+}
+
+function deleteItem(array) {
+
+  var index = array.map(function (e) { return e.id; }).indexOf(localStorage.getItem('idProdDel')) 
+    let indexdelete = array.splice(index)
+      localStorage.setItem('carritoTOTALb', JSON.stringify(indexdelete))
 
 }

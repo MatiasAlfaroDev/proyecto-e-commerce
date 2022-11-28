@@ -104,6 +104,14 @@ document.addEventListener("DOMContentLoaded", ()=> {
             relevance(res.products)
 
         })
+
+        const searchInput = document.querySelector('.searchBarInput')
+
+        searchInput.addEventListener('input', (e) => {
+            
+            const value = e.target.value
+            showProducts(searchProduct(res.products, value))
+        })
         
 
     })

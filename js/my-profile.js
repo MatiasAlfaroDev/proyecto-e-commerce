@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', ()=> {
-    
+
+    let userimg         = document.querySelector('#userimg')
+
+    if (localStorage.getItem('userimg') === undefined) {
+        userimg.src = 'https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'
+     } else { userimg.src = localStorage.getItem('userimg')}
+
     var user = JSON.parse(localStorage.getItem('usuario'))
 
     if (localStorage.getItem('usuario') !== null) {
@@ -22,6 +28,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             let apellido2       = document.querySelector('#apellido2').value
             let email           = document.querySelector('#email').value
             let number          = document.querySelector('#number').value
+            
 
             const usuario = {
 
@@ -36,6 +43,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
             }
 
+
+
             savelocal('usuario', JSON.stringify(usuario))   
     
         })
@@ -47,3 +56,21 @@ function savelocal(nombre, valor) {
 
 
 }
+
+
+const fileUpload = document.querySelector('#fileupload')
+
+    fileUpload.addEventListener('change', () => {
+
+        let userimg = fileUpload.files[0]
+        const ph = new FileReader()
+
+        ph.readAsDataURL(userimg)
+
+            ph.onload = () => {
+
+                localStorage.setItem('userimg', ph.result)
+
+            }
+    
+    })

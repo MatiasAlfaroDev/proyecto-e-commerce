@@ -6,6 +6,8 @@ console.log(productURL)
 
 document.addEventListener('DOMContentLoaded', () => {
 
+   
+
     let submitBtn = document.querySelector('#submitChat')
 
     fetch(productURL)
@@ -17,6 +19,23 @@ document.addEventListener('DOMContentLoaded', () => {
         showProductImage(res)
         showProductRelated(res)
         console.log(res)
+
+
+      
+    
+        let cartBuyBtn = document.querySelector('#cartBuyBtn')
+        cartBuyBtn.addEventListener('click', ()=>{
+
+          var carrito = JSON.parse(localStorage.getItem('carritoTOTAL'))
+          if (carrito == null) carrito = []
+
+          let prodToAdd = res
+          carrito.push(prodToAdd)
+
+          localStorage.setItem('carritoTOTAL', JSON.stringify(carrito))
+      
+      
+        })
       
     })
 
@@ -260,7 +279,7 @@ function showProductInfo(product) {
           <p>${product.soldCount} Vendidos</p>
             
           <div class="d-grid gap-2">
-            <button class="btn btn-primary fw-bold" style="background-color:#229fbc; border:none;" type="button">Comprar</button>
+            <button class="btn btn-primary fw-bold" style="background-color:#229fbc; border:none;" type="button" id="cartBuyBtn">Comprar</button>
             <button class="btn btn-light fw-bold" style="color:#229fbc; background-color: #d3eaf0 ;" type="button">Agregar al carrito</button>
           </div>
         </div> 

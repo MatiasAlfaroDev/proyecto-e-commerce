@@ -20,6 +20,10 @@
          <a href="home.html"><i class="fa-solid fa-house"></i></a>       
       </div>
 
+      <div>
+        <input class="searchBarInput" type="text" name="" id="searchproductbar" placeholder="Todo lo que busques está aquí!">   
+      </div>
+
       <div class="categoriesDropBtn">
         <form action="categories.html">
           <button class="catBtn">Categorías</button>
@@ -32,9 +36,7 @@
         </form> 
       </div>
 
-      <div>
-        <input class="searchBarInput" type="text" name="" id="" placeholder="Todo lo que busques está aquí!">   
-      </div>
+      
       
       <div>
         <button class="searchBarSearch-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -44,16 +46,25 @@
         <i class="fa-solid fa-user"></i>
       </div>
 
-    
 
     </div>
   </header>
   <main>
-    <div class="container">
-      <p class="fs-2 text-center mt-3">Perfil</p>
-      <hr>
 
+    <div class="div text-center">
+      <div class="col"><p class="fs-2 text-center mt-3">Perfil</p> </div>
+      <div class="col" ><img id="userimg" src="https://dummyimage.com/150x150" alt="" height="150px" width="150px" style="object-fit: fill;"></div>
+      <br>
+    </div>
+
+    <div class="container"> 
+      <br>
+      <div class="row">
+        <div class="col"> </div>
+        <div class="col"></div>
+      </div>
       <form class="row g-3 justify-content-center" id="userform">
+        <br>
         <div class="col-md-5">
           <label for="nombre1" class="form-label">Primer nombre</label>
           <input type="text" class="form-control" id="nombre1" value="" required>
@@ -62,7 +73,6 @@
           <label for="nombre2" class="form-label">Segundo nombre</label>
           <input type="text" class="form-control" id="nombre2" value="">
         </div>
-        
         <div class="col-md-5">
           <label for="apellido1" class="form-label">Primer apellido</label>
           <input type="text" class="form-control" id="apellido1" value="" required>
@@ -80,7 +90,11 @@
           <label for="number" class="form-label">Telefono de contacto</label>
           <input type="number" class="form-control" id="number" value="">
         </div>
-        <br>
+        <div class="col-md-5">
+          <label for="fileupload" class="form-label">Imagen de perfil</label>
+          <input type="file" class="form-control" id="fileupload" value="">
+        </div>
+
         <div class="text-center">
           <button class="btn btn-success" type="submit" id="profilesubmit">Guardar cambios</button>
         </div>
